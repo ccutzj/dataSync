@@ -1,42 +1,11 @@
 spring:
   profiles:
     active:
-      dev
+      prod
   application:
     name: data-sync
-#  datasource:
-#    test-while-idle: true
-#    test-on-borrow: false
-#    validation-query: SELECT 1 FROM DUAL
-#    time-between-eviction-runs-millis: 300000
-#    min-evictable-idle-time-millis: 1800000
-#    max-active: 100
-#  datasource_cdp:
-#    test-while-idle: true
-#    test-on-borrow: false
-#    validation-query: SELECT 1 FROM DUAL
-#    time-between-eviction-runs-millis: 300000
-#    min-evictable-idle-time-millis: 1800000
-#    max-active: 100
-#  datasource_ci:
-#    test-while-idle: true
-#    test-on-borrow: false
-#    validation-query: SELECT 1 FROM DUAL
-#    time-between-eviction-runs-millis: 300000
-#    min-evictable-idle-time-millis: 1800000
-#    max-active: 100
-#  resources:
-#    static-locations: classpath:static/
-#mybatis:
-#  config-locations: classpath:mybatis/mybatis-config.xml
-#  type-aliases-package: com.faw.pojo
-
-#logging:
-#  config: classpath:log/logback.xml
-
-#ribbon:
-#  eureka:
-#    enabled: true
+logging:
+  config: classpath:log/logback.xml
 
 feign:
   client:
@@ -44,10 +13,3 @@ feign:
       default:
         connectTimeout: 10000
         readTimeout: 10000
-        
-#defined:
-#  url:
-#    patterns: /**
-#    # 开放不拦截路由
-#    epatterns: /repair/**,/error,/rest/pass/**,/rest/export/carchangereview,/biz/**,/datasync/**,/vehicle_flow/**
-#    uploadpattern: /upload

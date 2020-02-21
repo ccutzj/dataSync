@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.faw.dao.ScrmGdHMapper" >
+  <resultMap id="BaseResultMap" type="com.faw.pojo.N00000020170BusinessHistory" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="BUSINESSID" property="businessid" jdbcType="VARCHAR" />
+    <result column="FROMSTEP" property="fromstep" jdbcType="VARCHAR" />
+    <result column="STEP" property="step" jdbcType="VARCHAR" />
+    <result column="ACTION" property="action" jdbcType="VARCHAR" />
+    <result column="TIME" property="time" jdbcType="TIMESTAMP" />
+    <result column="BDATE" property="date" jdbcType="TIMESTAMP" />
+    <result column="SORTTIME" property="sorttime" jdbcType="VARCHAR" />
+    <result column="BIUPDATETIME" property="biupdatetime" jdbcType="TIMESTAMP" />
+    <result column="EXCUTEACTION" property="excuteaction" jdbcType="VARCHAR" />
+    <result column="EXCUTEUSER" property="excuteuser" jdbcType="VARCHAR" />
+    <result column="MASTER" property="master" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, BUSINESSID, FROMSTEP, STEP, ACTION, TIME, BDATE, SORTTIME, BIUPDATETIME, EXCUTEACTION,
+    EXCUTEUSER, MASTER
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from SCRM_GD_H
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from SCRM_GD_H
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.faw.pojo.N00000020170BusinessHistory" >
+    insert into SCRM_GD_H (ID, BUSINESSID, FROMSTEP,
+      STEP, ACTION, TIME,
+      BDATE, SORTTIME, BIUPDATETIME,
+      EXCUTEACTION, EXCUTEUSER, MASTER
+      )
+    values (#{id,jdbcType=VARCHAR}, #{businessid,jdbcType=VARCHAR}, #{fromstep,jdbcType=VARCHAR},
+      #{step,jdbcType=VARCHAR}, #{action,jdbcType=VARCHAR}, to_date(#{time,jdbcType=TIMESTAMP}, 'yyyy/MM/dd HH24:mi:ss'),
+      to_date(#{date,jdbcType=TIMESTAMP}, 'yyyy/MM/dd HH24:mi:ss'), #{sorttime,jdbcType=VARCHAR},
+      to_date(#{biupdatetime,jdbcType=TIMESTAMP}, 'yyyy/MM/dd HH24:mi:ss'),
+      #{excuteaction,jdbcType=VARCHAR}, #{excuteuser,jdbcType=VARCHAR}, #{master,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.faw.pojo.N00000020170BusinessHistory" >
+    insert into SCRM_GD_H
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="businessid != null" >
+        BUSINESSID,
+      </if>
+      <if test="fromstep != null" >
+        FROMSTEP,
+      </if>
+      <if test="step != null" >
+        STEP,
+      </if>
+      <if test="action != null" >
+        ACTION,
+      </if>
+      <if test="time != null" >
+        TIME,
+      </if>
+      <if test="date != null" >
+        BDATE,
+      </if>
+      <if test="sorttime != null" >
+        SORTTIME,
+      </if>
+      <if test="biupdatetime != null" >
+        BIUPDATETIME,
+      </if>
+      <if test="excuteaction != null" >
+        EXCUTEACTION,
+      </if>
+      <if test="excuteuser != null" >
+        EXCUTEUSER,
+      </if>
+      <if test="master != null" >
+        MASTER,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="businessid != null" >
+        #{businessid,jdbcType=VARCHAR},
+      </if>
+      <if test="fromstep != null" >
+        #{fromstep,jdbcType=VARCHAR},
+      </if>
+      <if test="step != null" >
+        #{step,jdbcType=VARCHAR},
+      </if>
+      <if test="action != null" >
+        #{action,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        to_date(#{time,jdbcType=TIMESTAMP}, 'yyyy/MM/dd HH24:mi:ss'),
+      </if>
+      <if test="date != null" >
+        to_date(#{date,jdbcType=TIMESTAMP}, 'yyyy/MM/dd HH24:mi:ss'),
+      </if>
+      <if test="sorttime != null" >
+        #{sorttime,jdbcType=VARCHAR},
+      </if>
+      <if test="biupdatetime != null" >
+        to_date(#{biupdatetime,jdbcType=TIMESTAMP}, 'yyyy/MM/dd HH24:mi:ss'),
+      </if>
+      <if test="excuteaction != null" >
+        #{excuteaction,jdbcType=VARCHAR},
+      </if>
+      <if test="excuteuser != null" >
+        #{excuteuser,jdbcType=VARCHAR},
+      </if>
+      <if test="master != null" >
+        #{master,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.faw.pojo.N00000020170BusinessHistory" >
+    update SCRM_GD_H
+    <set >
+      <if test="businessid != null" >
+        BUSINESSID = #{businessid,jdbcType=VARCHAR},
+      </if>
+      <if test="fromstep != null" >
+        FROMSTEP = #{fromstep,jdbcType=VARCHAR},
+      </if>
+      <if test="step != null" >
+        STEP = #{step,jdbcType=VARCHAR},
+      </if>
+      <if test="action != null" >
+        ACTION = #{action,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        TIME = to_date(#{time,jdbcType=TIMESTAMP}, 'yyyy/MM/dd HH24:mi:ss'),
+      </if>
+      <if test="date != null" >
+        BDATE = to_date(#{date,jdbcType=TIMESTAMP}, 'yyyy/MM/dd HH24:mi:ss'),
+      </if>
+      <if test="sorttime != null" >
+        SORTTIME = #{sorttime,jdbcType=VARCHAR},
+      </if>
+      <if test="biupdatetime != null" >
+        BIUPDATETIME = to_date(#{biupdatetime,jdbcType=TIMESTAMP}, 'yyyy/MM/dd HH24:mi:ss'),
+      </if>
+      <if test="excuteaction != null" >
+        EXCUTEACTION = #{excuteaction,jdbcType=VARCHAR},
+      </if>
+      <if test="excuteuser != null" >
+        EXCUTEUSER = #{excuteuser,jdbcType=VARCHAR},
+      </if>
+      <if test="master != null" >
+        MASTER = #{master,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.faw.pojo.N00000020170BusinessHistory" >
+    update SCRM_GD_H
+    set BUSINESSID = #{businessid,jdbcType=VARCHAR},
+      FROMSTEP = #{fromstep,jdbcType=VARCHAR},
+      STEP = #{step,jdbcType=VARCHAR},
+      ACTION = #{action,jdbcType=VARCHAR},
+      TIME = to_date(#{time,jdbcType=TIMESTAMP}, 'yyyy/MM/dd HH24:mi:ss'),
+      BDATE = to_date(#{date,jdbcType=TIMESTAMP}, 'yyyy/MM/dd HH24:mi:ss'),
+      SORTTIME = #{sorttime,jdbcType=VARCHAR},
+      BIUPDATETIME = to_date(#{biupdatetime,jdbcType=TIMESTAMP}, 'yyyy/MM/dd HH24:mi:ss'),
+      EXCUTEACTION = #{excuteaction,jdbcType=VARCHAR},
+      EXCUTEUSER = #{excuteuser,jdbcType=VARCHAR},
+      MASTER = #{master,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <delete id="deleteAll" >
+    delete from SCRM_GD_H
+  </delete>
+
+  <insert id="insertAll">
+    insert into SCRM_GD_H (id, businessid, step,
+    action, excuteaction, excuteuser,
+    time, bdate,
+    sorttime, master,
+    fromstep,
+    biupdatetime)
+    values
+    <foreach item="item" index="index" collection="list" separator=",">
+      (#{item.id}, #{item.businessid}, #{item.step},
+      #{item.action}, #{item.excuteaction}, #{item.excuteuser},
+      to_date(#{item.time}, 'yyyy/MM/dd HH24:mi:ss'), to_date(#{item.date}, 'yyyy/MM/dd HH24:mi:ss'),
+      #{item.sorttime}, #{item.master},
+      #{item.fromstep},
+      to_date(#{item.biupdatetime}, 'yyyy/MM/dd HH24:mi:ss'))
+    </foreach>
+  </insert>
+</mapper>

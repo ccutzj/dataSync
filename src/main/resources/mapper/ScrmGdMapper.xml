@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.faw.dao.ScrmGdMapper" >
+  <resultMap id="BaseResultMap" type="com.faw.pojo.N00000020170Business" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="customer" property="customer" jdbcType="VARCHAR" />
+    <result column="callid" property="callId" jdbcType="VARCHAR" />
+    <result column="flow" property="flow" jdbcType="VARCHAR" />
+    <result column="account" property="account" jdbcType="VARCHAR" />
+    <result column="step" property="step" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="createtime" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="lastupdatetime" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="biupdatetime" property="biUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="createdate" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="updatetimestap" property="updateTimestap" jdbcType="VARCHAR" />
+    <result column="lastupdateuser" property="lastUpdateUser" jdbcType="VARCHAR" />
+    <result column="createuser" property="createUser" jdbcType="VARCHAR" />
+    <result column="master" property="master" jdbcType="VARCHAR" />
+    <result column="processmember" property="processMember" jdbcType="VARCHAR" />
+    <result column="bnumber" property="number" jdbcType="VARCHAR" />
+    <result column="processendtime" property="processEndTime" jdbcType="TIMESTAMP" />
+    <result column="HOLDTIME" property="holdTime" jdbcType="TIMESTAMP" />
+    <result column="fwml" property="_696b8da0_a42d_11e8_a3e2_e179449d4f5a" jdbcType="VARCHAR" />
+    <result column="fwml1" property="_696b8da0_a42d_11e8_a3e2_e179449d4f5a_1" jdbcType="VARCHAR" />
+    <result column="fwml2" property="_696b8da0_a42d_11e8_a3e2_e179449d4f5a_2" jdbcType="VARCHAR" />
+    <result column="fwml3" property="_696b8da0_a42d_11e8_a3e2_e179449d4f5a_3" jdbcType="VARCHAR" />
+    <result column="fwml4" property="_696b8da0_a42d_11e8_a3e2_e179449d4f5a_4" jdbcType="VARCHAR" />
+    <result column="DEALSTATUS" property="_780b7320_a42d_11e8_8e28_5903732491f4_default" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, customer, callid, flow, account, step,
+    status, createtime, lastupdatetime, biupdatetime, createdate, updatetimestap, lastupdateuser,
+    createuser, master, processmember, bnumber, processendtime, fwml, fwml1, fwml2, fwml3, fwml4, HOLDTIME, DEALSTATUS
+    </sql>
+
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from SCRM_GD
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.String" >
+    delete from SCRM_GD
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.faw.pojo.N00000020170Business" >
+    insert into SCRM_GD (id, customer, callid, flow, account, step,
+    status, createtime, lastupdatetime, biupdatetime, createdate, updatetimestap, lastupdateuser,
+    createuser, master, processmember, bnumber, processendtime, fwml, fwml1, fwml2, fwml3, fwml4, HOLDTIME, DEALSTATUS)
+    values (#{id,jdbcType=VARCHAR}, #{customer,jdbcType=VARCHAR}, #{callId,jdbcType=VARCHAR}, #{flow,jdbcType=VARCHAR},
+       #{account,jdbcType=VARCHAR}, #{step,jdbcType=VARCHAR},
+      #{status,jdbcType=VARCHAR}, to_date(#{createTime,jdbcType=TIMESTAMP}, 'yyyy/MM/dd HH24:mi:ss'),
+      to_date(#{lastUpdateTime,jdbcType=TIMESTAMP}, 'yyyy/MM/dd HH24:mi:ss'),
+      to_date(#{biUpdateTime,jdbcType=TIMESTAMP}, 'yyyy/MM/dd HH24:mi:ss'),
+      to_date(#{createDate,jdbcType=TIMESTAMP}, 'yyyy/MM/dd HH24:mi:ss'), #{updateTimestap,jdbcType=VARCHAR},
+      #{lastUpdateUser,jdbcType=VARCHAR}, #{createUser,jdbcType=VARCHAR}, #{master,jdbcType=VARCHAR},
+      #{processMember,jdbcType=VARCHAR}, #{number,jdbcType=VARCHAR},
+      to_date(#{processEndTime,jdbcType=TIMESTAMP}, 'yyyy/MM/dd HH24:mi:ss'),
+      #{_696b8da0_a42d_11e8_a3e2_e179449d4f5a,jdbcType=VARCHAR}, #{_696b8da0_a42d_11e8_a3e2_e179449d4f5a_1,jdbcType=VARCHAR},
+      #{_696b8da0_a42d_11e8_a3e2_e179449d4f5a_2,jdbcType=VARCHAR},
+      #{_696b8da0_a42d_11e8_a3e2_e179449d4f5a_3,jdbcType=VARCHAR}, #{_696b8da0_a42d_11e8_a3e2_e179449d4f5a_4,jdbcType=VARCHAR},
+      to_date(#{holdTime,jdbcType=TIMESTAMP}, 'yyyy/MM/dd HH24:mi:ss'),
+      #{_780b7320_a42d_11e8_8e28_5903732491f4_default,jdbcType=VARCHAR}
+      )
+  </insert>
+</mapper>
